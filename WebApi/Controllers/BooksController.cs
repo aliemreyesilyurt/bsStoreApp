@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using WebApi.Models;
+using Entities.Models;
 using WebApi.Repositories;
 
 //Not: SingleOrDefault(),  belirli bir kosulu karsilayan tek bir ogeyi getirmek icin kullanilir
