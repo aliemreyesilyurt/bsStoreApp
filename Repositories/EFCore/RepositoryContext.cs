@@ -23,5 +23,6 @@ namespace Repositories.EFCore
             modelBuilder.ApplyConfiguration(new BookConfig());
         }
         //BookConfig (cekirdek datayi iceren sinif) ile DbContext arasindaki iliskiyi kurar
+        //DbContextOptions yapisi, appsettings.json uzerinden gelen connectionString ifadesi ile DbContext'i bulusturur.
     }
 }
