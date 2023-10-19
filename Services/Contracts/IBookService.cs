@@ -10,7 +10,7 @@ namespace Services.Contracts
     public interface IBookService
     {
         IEnumerable<Book> GetAllBooks(bool trackChanges);
-        //IEnumerable, foreach ile dolasabilinen bir ifadedir
+        //IEnumerable, foreach ile dolasilabilinen bir ifadedir
         Book GetOneBookById(int id, bool trackChanges);
         Book CreateOneBook(Book book);
         void UpdateOneBook(int id, Book book, bool trackChanges);

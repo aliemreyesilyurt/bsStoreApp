@@ -9,6 +9,7 @@ namespace Repositories.Contracts
 {
     public interface IRepositoryBase<T>
     {
+        // Temel Arayuz
         // CRUD
         IQueryable<T> FindAll(bool trackChanges);
         IQueryable<T> FindByCondition(Expression<Func<T,bool>> expression, bool trackChanges);
