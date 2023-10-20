@@ -1,4 +1,5 @@
 using NLog;
+using Services.Contracts;
 using WebApi.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,14 +20,23 @@ builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureLoggerService();
+builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+var logger = app.Services.GetRequiredService<ILoggerService>();
+app.ConfigureExceptionHandler(logger);
+//GetRequiredService, app build edildikten (uygulama elde edildikten) sonra istenilen service'in kullanilabilmesi saglanir
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+}
+
+if(app.Environment.IsProduction())
+{
+    app.UseHsts();
 }
 
 app.UseHttpsRedirection();
