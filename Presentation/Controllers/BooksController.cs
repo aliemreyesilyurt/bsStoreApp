@@ -38,12 +38,15 @@ namespace Presentation.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateOneBook([FromBody] Book book)
+        public IActionResult CreateOneBook([FromBody] BookDtoForInsertion bookDto)
         {
-            if (book is null)
+            if (bookDto is null)
                 return BadRequest(); //400
 
-            _manager.BookService.CreateOneBook(book);
+            if (!ModelState.IsValid)
+                return UnprocessableEntity(ModelState); //422
+
+            var book = _manager.BookService.CreateOneBook(bookDto);
 
             return StatusCode(201, book);
         }
@@ -54,7 +57,10 @@ namespace Presentation.Controllers
             if (bookDto is null)
                 return BadRequest(); //400
 
-            _manager.BookService.UpdateOneBook(id, bookDto, true);
+            if(!ModelState.IsValid)
+                return UnprocessableEntity(ModelState); //422
+
+            _manager.BookService.UpdateOneBook(id, bookDto, false);
 
             return NoContent(); //204
         }
@@ -70,19 +76,23 @@ namespace Presentation.Controllers
 
         [HttpPatch("{id:int}")]
         public IActionResult PartiallyUpdateOneBook([FromRoute(Name = "id")] int id,
-            [FromBody] JsonPatchDocument<Book> bookPatch)
+            [FromBody] JsonPatchDocument<BookDtoForUpdate> bookPatch)
         {
             //JsonPatchDocument<Book> : JSON verilerini bir varlık sinifi(Book) uzerinde uygulamak icin kullanilir
 
-            //check entity
-            var entity = _manager
-                .BookService
-                .GetOneBookById(id, true);
+            if (bookPatch is null)
+                return BadRequest(); //400
 
-            bookPatch.ApplyTo(entity); //gelen JSON yamalarini "entity" nesnesine uygular 
-            _manager.BookService.UpdateOneBook(id, 
-                new BookDtoForUpdate(entity.Id, entity.Title, entity.Price), 
-                true);
+            var result = _manager.BookService.GetOneBookForPatch(id, false); //(BookForDtoUpdate, Book)
+
+            bookPatch.ApplyTo(result.bookDtoForUpdate, ModelState); //gelen JSON yamalarini "entity" nesnesine uygular 
+
+            TryValidateModel(result.bookDtoForUpdate);
+
+            if (!ModelState.IsValid)
+                return UnprocessableEntity(ModelState);
+
+            _manager.BookService.SaveChangesForUpdate(result.bookDtoForUpdate, result.book);
 
             return NoContent(); //204
         }
