@@ -33,5 +33,19 @@ namespace WebApi.Extensions
             services.AddSingleton<LogFilterAttribute>();
             //Singelton bir nesne olusturulmasi icin kullanilir.
         }
+
+        //CORS: Kokenler arasi kaynak paylasimi
+        public static void ConfigureCors(this IServiceCollection services)
+        {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", builder =>
+                    builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .WithExposedHeaders("X-Pagination")
+                );
+            });
+        }
 }
 }
