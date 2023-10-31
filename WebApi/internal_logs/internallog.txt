@@ -142,3 +142,21 @@
 2023-10-28 04:12:08.7862 Info Configuration initialized.
 2023-10-28 04:21:38.4344 Info AppDomain Shutting down. LogFactory closing...
 2023-10-28 04:21:38.4344 Info LogFactory has been closed.
+2023-10-31 18:39:18.1891 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-10-31 18:39:18.2079 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2023-10-31 18:39:18.2209 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Courses\AspNetCoreWebApi\Applications\bsStoreApp\WebApi\nlog.config
+2023-10-31 18:39:18.2337 Info Configuration initialized.
+2023-10-31 18:41:30.3525 Info AppDomain Shutting down. LogFactory closing...
+2023-10-31 18:41:30.3660 Info LogFactory has been closed.
+2023-10-31 18:41:56.1304 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-10-31 18:41:56.1454 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2023-10-31 18:41:56.1568 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Courses\AspNetCoreWebApi\Applications\bsStoreApp\WebApi\nlog.config
+2023-10-31 18:41:56.1568 Info Configuration initialized.
+2023-10-31 18:43:31.2471 Info AppDomain Shutting down. LogFactory closing...
+2023-10-31 18:43:31.2471 Info LogFactory has been closed.
+2023-10-31 18:44:52.8578 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-10-31 18:44:52.8739 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2023-10-31 18:44:52.8858 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Courses\AspNetCoreWebApi\Applications\bsStoreApp\WebApi\nlog.config
+2023-10-31 18:44:52.8858 Info Configuration initialized.
+2023-10-31 18:46:38.1400 Info AppDomain Shutting down. LogFactory closing...
+2023-10-31 18:46:38.1400 Info LogFactory has been closed.
